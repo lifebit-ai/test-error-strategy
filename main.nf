@@ -68,4 +68,8 @@ workflow.onComplete {
     anacondaDir.deleteDir()
     def dlBinDir = new File('/home/ubuntu/.dl_binaries')
     dlBinDir.deleteDir()
+
+    def work_dir = workflow.workDir
+    println "Workflow dir - $work_dir"
+    workflow.success ? work_dir.deleteDir()
 }
