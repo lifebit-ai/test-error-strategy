@@ -64,12 +64,7 @@ process test_nf_3 {
 // Completion notification
 
 workflow.onComplete {
-    def anacondaDir = new File('/home/ubuntu/anaconda3')
-    anacondaDir.deleteDir()
-    def dlBinDir = new File('/home/ubuntu/.dl_binaries')
-    dlBinDir.deleteDir()
-
     def work_dir = workflow.workDir
     println "Workflow dir - $work_dir"
-    if(workflow.success) work_dir.deleteDir() 
+    if(workflow.success) work_dir.deleteDir() println "Successfully finished"
 }
