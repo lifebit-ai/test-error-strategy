@@ -71,5 +71,5 @@ workflow.onComplete {
 
     def work_dir = workflow.workDir
     println "Workflow dir - $work_dir"
-    workflow.success ? work_dir.deleteDir()
+    workflow.success ? work_dir.deleteDir() : println "job failed"
 }
