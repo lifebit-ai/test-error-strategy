@@ -63,8 +63,8 @@ process test_nf_3 {
 
 // Completion notification
 
-workflow.onComplete {
-    def work_dir = workflow.workDir
-    println "Workflow dir - $work_dir"
-    if(workflow.success) work_dir.deleteDir() println "Successfully finished"
-}
+// workflow.onComplete {
+//     def work_dir = workflow.workDir
+//     println "Workflow dir - $work_dir"
+//     if(workflow.success) work_dir.deleteDir() println "Successfully finished"
+// }
