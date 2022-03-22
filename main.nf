@@ -1,4 +1,5 @@
 process test_nf {
+  echo true
   container 'quay.io/lifebitai/cloudos-cli:0.0.2'
 
   input:
@@ -11,6 +12,9 @@ process test_nf {
   """
   touch hello.txt
   echo "hello" > hello.txt
+  echo "###########"
+  echo "storage size where this process is running"
+  df -h
   """
 }
 
