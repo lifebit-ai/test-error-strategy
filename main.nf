@@ -1,9 +1,11 @@
+ch_input_file = Channel.fromPath(params.input, checkIfExists: true)
+
 process test_nf {
   echo true
   container 'quay.io/lifebitai/cloudos-cli:0.0.2'
 
   input:
-  //tuple val(value), path(input)
+  file(input_file) from ch_input_file
 
   output:
   file("hello.txt") into (ch_hpo_terms_file, ch_hpo_terms_file_inspect)
@@ -15,6 +17,7 @@ process test_nf {
   echo "###########"
   echo "storage size where this process is running"
   df -h
+  head $input_file
   """
 }
 
