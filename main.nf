@@ -11,9 +11,11 @@ process test_nf {
   file("hello.txt") into (ch_hpo_terms_file, ch_hpo_terms_file_inspect)
 
   script:
+  add_hpo_term =  params.introduce_error ? "" : "echo HP00763 >> hello.txt"
   """
   touch hello.txt
   echo "hello" > hello.txt
+  $add_hpo_term
   echo "###########"
   echo "storage size where this process is running"
   df -h
