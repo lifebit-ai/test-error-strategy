@@ -1,16 +1,25 @@
+ch_input_file = Channel.fromPath(params.input, checkIfExists: true)
+
 process test_nf {
+  echo true
   container 'quay.io/lifebitai/cloudos-cli:0.0.2'
 
   input:
-  //tuple val(value), path(input)
+  file(input_file) from ch_input_file
 
   output:
   file("hello.txt") into (ch_hpo_terms_file, ch_hpo_terms_file_inspect)
 
   script:
+  add_hpo_term =  params.introduce_error ? "" : "echo HP00763 >> hello.txt"
   """
   touch hello.txt
   echo "hello" > hello.txt
+  $add_hpo_term
+  echo "###########"
+  echo "storage size where this process is running"
+  df -h
+  head $input_file
   """
 }
 
@@ -63,9 +72,8 @@ process test_nf_3 {
 
 // Completion notification
 
-workflow.onComplete {
-    def anacondaDir = new File('/home/ubuntu/anaconda3')
-    anacondaDir.deleteDir()
-    def dlBinDir = new File('/home/ubuntu/.dl_binaries')
-    dlBinDir.deleteDir()
-}
+// workflow.onComplete {
+//     def work_dir = workflow.workDir
+//     println "Workflow dir - $work_dir"
+//     if(workflow.success) work_dir.deleteDir() println "Successfully finished"
+// }
