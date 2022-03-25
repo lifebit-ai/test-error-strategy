@@ -4,9 +4,9 @@ This a mini nextflow to test single step/process error(exit) behavior with modif
 
 ## `--introduce_error`
 
-By enabling (`true`) this parameter we introduce error by not having any HPO term in a file which goes from first process to second process.
+By enabling (`true`) this parameter we introduce error by not having any HPO term in a file which goes from step_1 to step_2 process.
 
-Expected behavior pipeline will success without an non zero exit, but second process will fail.
+Expected behavior pipeline will success without an non zero exit, but `step_2` process will fail.
 
 ## Test results
 

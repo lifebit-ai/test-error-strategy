@@ -1,8 +1,7 @@
 ch_input_file = Channel.fromPath(params.input, checkIfExists: true)
 
-process test_nf {
-  echo true
-  container 'quay.io/lifebitai/cloudos-cli:0.0.2'
+process step_1 {
+  echo params.echo
 
   input:
   file(input_file) from ch_input_file
@@ -35,7 +34,7 @@ ch_hpo_terms = ch_hpo_terms_file
 ch_hpo_terms_inspect.dump(tag:'ch_hpo_terms (tokenised string)')
 
 
-process test_nf_2 {
+process step_2 {
 
   input:
   val(hpo_terms) from ch_hpo_terms
@@ -56,7 +55,7 @@ process test_nf_2 {
 
 
 
-process test_nf_3 {
+process step_3 {
 
   input:
 
