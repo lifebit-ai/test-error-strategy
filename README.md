@@ -20,3 +20,10 @@ This works as expected with local and ignite (base CloudOS). But with AWS batch 
 
 https://staging.lifebit.ai/public/jobs/62388076e7f7ce013730e7e6
 
+<img width="753" alt="image" src="https://user-images.githubusercontent.com/23085664/160109558-93ae172e-379d-4196-9229-4b497187d629.png">
+
+### Executer - awsbatch
+
+https://staging.lifebit.ai/public/jobs/62388583e7f7ce013730f00f
+
+<img width="668" alt="image" src="https://user-images.githubusercontent.com/23085664/160109725-d8a0bac5-5b9d-4e37-b58f-521e94317647.png">
