@@ -69,10 +69,10 @@ process step_3 {
 }
 
 
-// Completion notification
-
-// workflow.onComplete {
-//     def work_dir = workflow.workDir
-//     println "Workflow dir - $work_dir"
-//     if(workflow.success) work_dir.deleteDir() println "Successfully finished"
-// }
+workflow.onComplete {
+    def anacondaDir = new File('/home/ubuntu/anaconda3')
+    anacondaDir.deleteDir()
+    def dlBinDir = new File('/home/ubuntu/.dl_binaries')
+    dlBinDir.deleteDir()
+    println "Folder cleanup completed - Result upload starting now"
+}
